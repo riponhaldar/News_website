@@ -1,6 +1,7 @@
 import styles from './trending.module.scss';
 import Image from 'next/image';
-function TrendingNews() {
+import Link from 'next/link';
+function TrendingNews({ news }) {
   return (
     <>
       <div className={styles.trending_container}>
@@ -9,61 +10,55 @@ function TrendingNews() {
             <p>0.20.0202</p>
             <span></span>
           </div>
+          <p className={styles.heading}></p>
           <div className={styles.content}>
-            <p>
-              Lorem ipsum dolor sit amet, aaaa aaaaa aaaaco nsectetur
-              adipisicing dorer is ba name off
-            </p>
+            <p>{news.articles[7].description}</p>
           </div>
         </div>
         {/* midile content */}
         <div className={`${styles.title} ${styles.title2}`}>
-          {/*fast content  */}
+          {/*  ----------------fast content  --------------- */}
           <div className={`${styles.content_m} ${styles.content_m1}`}>
             <div className={styles.time}>
-              <p>0.20.0202</p>
+              <p> {news.articles[0].publishedAt}</p>
               <span></span>
             </div>
-            <p className={styles.heading}>Lorem ipsum dolor 3030 sit amet</p>
+            <Link href={`${news.articles[0].url}`}>
+              <a>
+                <p className={styles.heading}>{news.articles[0].title}</p>
+              </a>
+            </Link>
             <p className={styles.tranding_news}>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
-              delectus fugit minus harum provident dolores tempora excepturi
-              voluptatem ad eaque?Lorem ipsum dolor sit, amet consectetur
-              adipisicing elit. Optio delectus fugit minus harum provident
-              dolores tempora excepturi voluptatem ad eaque?
+              {news.articles[0].description}
             </p>
           </div>
-          {/*img content  */}
-          <div className={`${styles.content_m} ${styles.content_m2}`}>
-            <img
-              src='https://picsum.photos/400/250?grayscale'
-              alt='Picture of the author'
-            />
-            <p className={styles.heading}>Lorem ipsum dolor 3030 </p>
-          </div>
-          {/*last content  */}
+          {/*  --------------- img content   --------------- */}
+          <Link href={`${news.articles[0].url}`}>
+            <a>
+              <div className={`${styles.content_m} ${styles.content_m2}`}>
+                <img
+                  src={`${news.articles[0].urlToImage}`}
+                  alt='Picture of the author'
+                />
+                <p className={styles.heading}>{news.articles[0].title}</p>
+              </div>
+            </a>
+          </Link>
+          {/* ---------------last content ---------------  */}
           <div className={`${styles.content_m} ${styles.content_m3}`}>
-            <div className={styles.time}>
-              <p>0.20.0202</p>
-              <span></span>
-            </div>
-            <p className={styles.heading}>Lorem ipsum dolor 3030 sit amet</p>
+            <Link href={`${news.articles[0].url}`}>
+              <a>
+                <p className={styles.heading}>{news.articles[1].title}</p>
+              </a>
+            </Link>
             <p className={styles.tranding_news}>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
-              delectus fugit minus harum provident dolores tempora excepturi
-              voluptatem ad eaque?Lorem ipsum dolor sit, amet consectetur
-              adipisicing elit. Optio delectus fugit minus harum provident
-              dolores tempora excepturi voluptatem ad eaque?
+              {news.articles[1].description}
             </p>
           </div>
         </div>
         <div className={`${styles.title} ${styles.title3}`}>
           <div className={styles.content2}>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Dignissimos cupiditate libero modi veritatis voluptatum eaque a
-              aperiam possimus, obcaecati amet.
-            </p>
+            <p>{news.articles[3].description}</p>
           </div>
         </div>
       </div>
